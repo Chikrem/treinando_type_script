@@ -3,7 +3,8 @@
         "target": "ES6",
         "outDir": "dist/js",
         "noEmitOnError": true,
-        "skipLibCheck": true     
+        "skipLibCheck": true,
+        "noImplicitAny": true     
     },
     "include": [
         "app/**/*"
