@@ -1,24 +1,30 @@
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { MensagemView } from "../views/mensagem-view.js";
+import { NegociacoesView } from "../views/negociacoes-view.js";
 
 export class Negociacaocontroller {
     private inputData: HTMLInputElement;      //type="date" no html
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
     private negociacoes: Negociacoes = new Negociacoes();
+    private negociacoesView = new NegociacoesView('#negociacoesView');
+    private mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
+        this.negociacoesView.update(this.negociacoes);
     }
 
     adiciona(): void {
 
-        const negociacao = this.criaNegociacao();
-        this.negociacoes.adiciona(negociacao);
-        console.log(this.negociacoes.lista());
-        this.limpaFormulario();
+        const negociacao = this.criaNegociacao();  // 1 Cria Obj Negociacao
+        this.negociacoes.adiciona(negociacao); // 2 Adiciona o Obj Negociacao no Array Negociacoes
+        this.negociacoesView.update(this.negociacoes); // 3 Atualiza a tabela com os novos Obj
+        this.mensagemView.update('Negociação adicionada com sucesso!') // 4 Emite a mensagem de alerta de operação bem sucedida
+        this.limpaFormulario(); // 5 Limpa e reseta o foco do formulário 
     }
 
     criaNegociacao(): Negociacao {
