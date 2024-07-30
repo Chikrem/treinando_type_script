@@ -1,5 +1,4 @@
 import { NegociacaoController } from './controllers/negociacao-controller.js';
-import { escape } from './decorators/escape.js';
 
 const controller = new NegociacaoController();
 const form = document.querySelector('.form');
@@ -13,12 +12,10 @@ if (form) {
 }
 
 const botaoImporta = document.querySelector('#botao-importa');
-
-if(botaoImporta){
+if (botaoImporta) {
     botaoImporta.addEventListener('click', () => {
         controller.importaDados();
-    })
-
+    });
 } else {
-    throw Error('Botão importar não foi encontrado!')
+    throw Error('Botão importa não foi encontrado');
 }

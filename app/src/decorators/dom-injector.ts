@@ -23,5 +23,3 @@ export function domInjector(seletor: string) {
         );
     }
 }
-
-//Um property decorator é aplicado a uma propriedade de uma classe e pode ser usado para modificar a metadados ou a funcionalidade da propriedade.
